@@ -16,24 +16,34 @@ class LSystemPane extends React.Component {
     render(){
         return (
             <div className = "app">
-                <ControlPane testClick={()=> this.testClick()} generateString={this.generateString}></ControlPane>
+                <ControlPane generateString={this.generateString}></ControlPane>
                 <ViewPane value={this.state.counter} ruleString={this.state.ruleString}></ViewPane>
             </div>
         );
     }
 
-    testClick()
-    {
-        let count = this.state.counter;
-        count = count+1;
-        this.setState({counter:count});
-        alert("Test Message" + count);
-    }
+    generateString(formState){
+        const rules = formState.symbolRules;
+        const axiom = formState.axiom;
+        const iterations = parseInt(formState.iterations);
+        let resultString = axiom;
+        for (let ii = 0; ii < iterations; ii++) {
+            let workString = "";
+            resultString.split("").forEach(charr => {
+                
+                workString += this.findRuleBySymbol(rules, charr);
+            });
+            resultString = workString;
+        }
 
-    generateString(resultString){
         this.setState({
             ruleString: resultString
         });
+    }
+
+    findRuleBySymbol(rules, symbol){
+        const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
+        return resultRule ? resultRule.rule : symbol;
     }
 }
 

@@ -5,14 +5,14 @@ class SystemRulePane extends Component{
     constructor(props){
         super(props)
         this.state = {
-            systemRules: [{
+            symbolRules: [{
                 symbol: 'a',
                 rule:"ab"
             },{
                 symbol: 'b',
                 rule:"ba"
             }],
-            axiom : "",
+            axiom : "a",
             iterations : 4
         }
 
@@ -23,7 +23,7 @@ class SystemRulePane extends Component{
     }
 
     newRule(){
-        let rules = this.state.systemRules;
+        let rules = this.state.symbolRules;
         rules.push({
             symbol: "",
             rule:""
@@ -32,29 +32,29 @@ class SystemRulePane extends Component{
     }
 
     handleSymbolChange(index, symbolText){
-        const values = [...this.state.systemRules];
+        const values = [...this.state.symbolRules];
         values[index].symbol = symbolText;
         this.setState({
-            systemRules: values
+            symbolRules: values
         });
     }
 
     handleRuleChange(index, ruleText){
-        const values = [...this.state.systemRules];
+        const values = [...this.state.symbolRules];
         values[index].rule = ruleText;
         this.setState({
-            systemRules: values
+            symbolRules: values
         });
     }
 
     handleDrawSystem(){
-        const fish = "fish";
-        this.props.generateString(fish);
+        const formState = this.state;
+        this.props.generateString(formState);
     }
 
     render(){
         const rules = [];
-        this.state.systemRules.forEach((rule, index)=>{
+        this.state.symbolRules.forEach((rule, index)=>{
             rules.push(
                 <SystemRuleInput 
                     key={index} 

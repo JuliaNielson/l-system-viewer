@@ -35,6 +35,7 @@
 
 .View-pane{
   width: 70%;
+  word-wrap: break-word;
   min-height: 100vh;
   float: right;
   background-color : #ffbad2;
