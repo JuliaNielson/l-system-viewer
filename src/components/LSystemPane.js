@@ -6,15 +6,18 @@ class LSystemPane extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            counter: 0
+            counter: 0,
+            ruleString: ""
         }
+
+        this.generateString = this.generateString.bind(this);
     }
     
     render(){
         return (
             <div className = "app">
-                <ControlPane testClick={()=> this.testClick()}></ControlPane>
-                <ViewPane value={this.state.counter}></ViewPane>
+                <ControlPane testClick={()=> this.testClick()} generateString={this.generateString}></ControlPane>
+                <ViewPane value={this.state.counter} ruleString={this.state.ruleString}></ViewPane>
             </div>
         );
     }
@@ -25,6 +28,12 @@ class LSystemPane extends React.Component {
         count = count+1;
         this.setState({counter:count});
         alert("Test Message" + count);
+    }
+
+    generateString(resultString){
+        this.setState({
+            ruleString: resultString
+        });
     }
 }
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../logo.svg';
 import '../App.css';
+import SystemRulePane from './SystemRulePane';
 
 class ControlPane extends Component {
     render(){
@@ -8,18 +9,11 @@ class ControlPane extends Component {
             <div className="Control-pane">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                Edit <code>src/App.js</code> and save to reload.
+                <p style={{ textAlign: 'center'}}>
+                Welcome to Nielson's Lindenmeyer System Viewer
                 </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
-                <button onClick={this.props.testClick}>Test Button</button>
+                <SystemRulePane generateString={this.props.generateString}/>
+                
             </header>
             </div>
         );
