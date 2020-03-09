@@ -12,7 +12,12 @@ class ControlPane extends Component {
                 <p style={{ textAlign: 'center'}}>
                 Welcome to Nielson's Lindenmeyer System Viewer
                 </p>
-                <SystemRulePane generateString={this.props.generateString}/>
+                <SystemRulePane 
+                    generateString={this.props.generateString} 
+                    ruleState={this.props.ruleState} 
+                    formHandler={this.props.formHandler} 
+                    addRuleHandler={this.props.addRuleHandler}
+                />
                 
             </header>
             </div>

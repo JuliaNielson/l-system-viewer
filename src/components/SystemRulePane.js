@@ -16,53 +16,24 @@ class SystemRulePane extends Component{
             iterations : 4
         }
 
-        this.newRule = this.newRule.bind(this);
-        this.handleSymbolChange = this.handleSymbolChange.bind(this);
-        this.handleRuleChange = this.handleRuleChange.bind(this);
         this.handleDrawSystem = this.handleDrawSystem.bind(this);
     }
 
-    newRule(){
-        let rules = this.state.symbolRules;
-        rules.push({
-            symbol: "",
-            rule:""
-        })
-        this.setState(rules);
-    }
-
-    handleSymbolChange(index, symbolText){
-        const values = [...this.state.symbolRules];
-        values[index].symbol = symbolText;
-        this.setState({
-            symbolRules: values
-        });
-    }
-
-    handleRuleChange(index, ruleText){
-        const values = [...this.state.symbolRules];
-        values[index].rule = ruleText;
-        this.setState({
-            symbolRules: values
-        });
-    }
-
     handleDrawSystem(){
-        const formState = this.state;
+        const formState = this.props.ruleState;
         this.props.generateString(formState);
     }
 
     render(){
         const rules = [];
-        this.state.symbolRules.forEach((rule, index)=>{
+        this.props.ruleState.symbolRules.forEach((rule)=>{
             rules.push(
                 <SystemRuleInput 
-                    key={index} 
-                    index={index} 
+                    key={rule.index} 
+                    index={rule.ruleIndex} 
                     symbol={rule.symbol} 
-                    rule={rule.rule} 
-                    handleSymbolChange={this.handleSymbolChange} 
-                    handleRuleChange={this.handleRuleChange}
+                    rule={rule.replacementRule} 
+                    handleChange={this.props.formHandler}
                 />
             );
 
@@ -108,7 +79,7 @@ class SystemRulePane extends Component{
 
                     <tr>
                         <td>
-                            <button onClick={this.newRule}>New Rule</button>
+                            <button onClick={this.props.addRuleHandler}>New Rule</button>
                         </td>
                         <td>
                             <button onClick={this.handleDrawSystem}>Draw System</button>
