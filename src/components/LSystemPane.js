@@ -10,20 +10,38 @@ class LSystemPane extends React.Component {
                 symbolRules: [{
                     ruleIndex: 0,
                     symbol: 'a',
-                    replacementRule:"ab"
+                    replacementRule:"ebcdacadcbe",
+                    drawRule:"None"
                 },{
                     ruleIndex: 1,
                     symbol: 'b',
-                    replacementRule:"ba"
+                    replacementRule:"dacebcbecad",
+                    drawRule:"None"
+                },{
+                    ruleIndex: 2,
+                    symbol: 'c',
+                    replacementRule:"c",
+                    drawRule:"Move"
+                },{
+                    ruleIndex: 3,
+                    symbol: 'd',
+                    replacementRule:"d",
+                    drawRule:"AnglePos"
+                },{
+                    ruleIndex: 4,
+                    symbol: 'e',
+                    replacementRule:"e",
+                    drawRule:"AngleNeg"
                 }],
                 axiom : "a",
                 iterations : 4
             },
-            resultString : ""
+            ruleString : ""
         }
         this.generateString = this.generateString.bind(this);
         this.addRuleHandler = this.addRuleHandler.bind(this);
         this.handleForm = this.handleForm.bind(this);
+        this.editSymbolRule = this.editSymbolRule.bind(this);
     }
 
     
@@ -37,7 +55,7 @@ class LSystemPane extends React.Component {
                     formHandler={this.handleForm}
                     addRuleHandler={this.addRuleHandler}
                 ></ControlPane>
-                <ViewPane 
+                <ViewPane ref="viewPane"
                     value={this.state.counter} 
                     ruleString={this.state.ruleString} 
                     ruleState={this.state.ruleState}
@@ -63,6 +81,7 @@ class LSystemPane extends React.Component {
         this.setState({
             ruleString: resultString
         });
+        this.refs.viewPane.updateCanvas(resultString);
     }
 
     findReplacementRuleBySymbol(rules, symbol){
@@ -75,8 +94,22 @@ class LSystemPane extends React.Component {
     }
 
     handleForm(e){
+        e.persist();
         if (["symbol", "replacementRule", "drawRule"].includes(e.target.className)){
-            let rules = [...this.state.ruleState.symbolRules];
+            this.editSymbolRule(e);
+        }
+        else if(["axiom", "iterations"].includes(e.target.className)){
+            this.setState(prevState => ({
+                ruleState:{
+                    ...prevState.ruleState,
+                [e.target.className] : e.target.value
+                }
+            }));
+        }
+    }
+
+    editSymbolRule(e){
+        let rules = [...this.state.ruleState.symbolRules];
             let index = parseInt(e.target.id, 10);
 
             let changedRule = this.findRuleByIndex(rules, index);
@@ -93,7 +126,6 @@ class LSystemPane extends React.Component {
                     symbolRules: newRules                    
                 }
             }));
-        }
     }
 
     addRuleHandler(e){

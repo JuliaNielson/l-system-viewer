@@ -4,18 +4,6 @@ import SystemRuleInput from './SystemRuleInput';
 class SystemRulePane extends Component{
     constructor(props){
         super(props)
-        this.state = {
-            symbolRules: [{
-                symbol: 'a',
-                rule:"ab"
-            },{
-                symbol: 'b',
-                rule:"ba"
-            }],
-            axiom : "a",
-            iterations : 4
-        }
-
         this.handleDrawSystem = this.handleDrawSystem.bind(this);
     }
 
@@ -31,8 +19,7 @@ class SystemRulePane extends Component{
                 <SystemRuleInput 
                     key={rule.index} 
                     index={rule.ruleIndex} 
-                    symbol={rule.symbol} 
-                    rule={rule.replacementRule} 
+                    rule={rule} 
                     handleChange={this.props.formHandler}
                 />
             );
@@ -58,10 +45,10 @@ class SystemRulePane extends Component{
                     </tr>
                     <tr>
                         <td>
-                            <input type="Text" value={this.state.axiom} onChange={(e)=>this.setState({axiom : e.target.value})}/>
+                            <input type="Text" value={this.props.ruleState.axiom} className="axiom" onChange={this.props.formHandler}/>
                         </td>
                         <td>
-                            <select value={this.state.iterations} onChange={(e)=>this.setState({iterations:e.target.value})}>
+                            <select value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
                                 {iterationsDropDown}
                             </select>
                         </td>
