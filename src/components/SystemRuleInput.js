@@ -20,7 +20,7 @@ class SystemRuleInput extends Component{
                     <input type="Text" className="replacementRule" id={this.props.index} value={this.props.rule.replacementRule} onChange = {this.props.handleChange}/>
                 </td>
                 <td>
-                    <select className="drawRule" id={this.props.index} value={this.props.rule.drawRule}>
+                    <select className="drawRule" id={this.props.index} value={this.props.rule.drawRule} onChange={this.props.handleChange}>
                         {ruleSelections}
                     </select>
                 </td>

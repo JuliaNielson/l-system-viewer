@@ -4,20 +4,69 @@ import Turtle from '../Turtle/Turtle';
 
 class ViewPane extends React.Component {
     constructor(props){
+        //props.ruleState;
         super(props);
-        this.turtle = new Turtle(props);
+        this.state = {
+            message: ""
+        }
+
         this.updateCanvas = this.updateCanvas.bind(this);
+        this.generateString = this.generateString.bind(this);
     }
     
     componentDidMount(){
-        this.updateCanvas("");
+        this.updateCanvas();
     }
-    updateCanvas(ruleString){
+    updateCanvas(){
+        let ruleString = this.generateString();
+
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext('2d');
         this.fitToContainer(canvas);
-        let p = this.turtle.getPath(ruleString);
-        ctx.stroke(p);
+        if (ruleString)
+        {
+            let turtle = new Turtle(this.props);
+            let p = turtle.getPath(ruleString);
+            ctx.translate(p.minX*-1, p.minY*-1);
+            ctx.stroke(p.result);
+        }
+        
+    }
+
+    findReplacementRuleBySymbol(rules, symbol){
+        const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
+        return resultRule ? resultRule.replacementRule : symbol;
+    }
+    
+    generateString(){
+        const rules = this.props.ruleState.symbolRules;
+        const axiom = this.props.ruleState.axiom;
+        const iterations = parseInt(this.props.ruleState.iterations);
+        let resultString = axiom;
+        for (let ii = 0; ii < iterations; ii++) {
+            let workString = "";
+            if (resultString.length < 250000)
+            {
+                resultString.split("").forEach(charr => {
+                    workString += this.findReplacementRuleBySymbol(rules, charr);
+                });
+
+                resultString = workString;
+            }
+            else{
+                this.setState({
+                    message: "That drawing may cause your browser to slow down, so it was canceled instead. Try using a smaller value for the iterations."
+                });
+                return axiom;
+            }
+        }
+
+        this.setState({
+            ruleString: resultString,
+            message: ""
+        });
+
+        return resultString;
     }
 
     fitToContainer(canvas){
@@ -28,10 +77,11 @@ class ViewPane extends React.Component {
     }
     
     render(){
+        let breakk = this.state.message === null ? "" : <br/>;
         return (
             <div className="View-pane" id="viewPane">
-                {this.props.ruleString}
-                <br/>
+                {this.state.message}
+                {breakk}
                 <canvas ref="canvas">
                 Your browser does not support the HTML5 canvas tag or you're looking at a search engine preview or something.
                 </canvas>

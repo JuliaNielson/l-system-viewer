@@ -13,7 +13,7 @@ class ControlPane extends Component {
                 Welcome to Nielson's Lindenmeyer System Viewer
                 </p>
                 <SystemRulePane 
-                    generateString={this.props.generateString} 
+                    handleDrawButton={this.props.handleDrawButton} 
                     ruleState={this.props.ruleState} 
                     formHandler={this.props.formHandler} 
                     addRuleHandler={this.props.addRuleHandler}

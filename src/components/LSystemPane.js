@@ -34,11 +34,11 @@ class LSystemPane extends React.Component {
                     drawRule:"AngleNeg"
                 }],
                 axiom : "a",
-                iterations : 4
+                iterations : 5
             },
             ruleString : ""
         }
-        this.generateString = this.generateString.bind(this);
+        this.handleDrawButton = this.handleDrawButton.bind(this);
         this.addRuleHandler = this.addRuleHandler.bind(this);
         this.handleForm = this.handleForm.bind(this);
         this.editSymbolRule = this.editSymbolRule.bind(this);
@@ -50,13 +50,12 @@ class LSystemPane extends React.Component {
         return (
             <div className = "app">
                 <ControlPane 
-                    generateString={this.generateString} 
+                    handleDrawButton={this.handleDrawButton} 
                     ruleState={this.state.ruleState} 
                     formHandler={this.handleForm}
                     addRuleHandler={this.addRuleHandler}
                 ></ControlPane>
                 <ViewPane ref="viewPane"
-                    value={this.state.counter} 
                     ruleString={this.state.ruleString} 
                     ruleState={this.state.ruleState}
                 ></ViewPane>
@@ -64,30 +63,11 @@ class LSystemPane extends React.Component {
         );
     }
 
-    generateString(formState){
-        const rules = formState.symbolRules;
-        const axiom = formState.axiom;
-        const iterations = parseInt(formState.iterations);
-        let resultString = axiom;
-        for (let ii = 0; ii < iterations; ii++) {
-            let workString = "";
-            resultString.split("").forEach(charr => {
-                
-                workString += this.findReplacementRuleBySymbol(rules, charr);
-            });
-            resultString = workString;
-        }
-
-        this.setState({
-            ruleString: resultString
-        });
-        this.refs.viewPane.updateCanvas(resultString);
+    handleDrawButton(){
+        
+        this.refs.viewPane.updateCanvas();
     }
 
-    findReplacementRuleBySymbol(rules, symbol){
-        const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
-        return resultRule ? resultRule.replacementRule : symbol;
-    }
     findRuleByIndex(rules, index){
         const resultRule = rules.find((rule)=>{return rule.ruleIndex === index});
         return resultRule;

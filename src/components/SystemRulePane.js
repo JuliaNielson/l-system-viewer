@@ -8,8 +8,7 @@ class SystemRulePane extends Component{
     }
 
     handleDrawSystem(){
-        const formState = this.props.ruleState;
-        this.props.generateString(formState);
+        this.props.handleDrawButton();
     }
 
     render(){
