@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -28,9 +29,21 @@
   color: #61dafb;
 }
 
+.Body-format{
+  overflow: hidden;
+}
+
+.L-system-pane{
+  overflow: hidden;
+}
+
 .Control-pane{
   width: 30%;
+  height: 100%;
+  position:fixed;
   float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .View-pane{
@@ -39,6 +52,7 @@
   min-height: 100vh;
   float: right;
   background-color : #ffbad2;
+  overflow-y: scroll;
 }
 
 @keyframes App-logo-spin {

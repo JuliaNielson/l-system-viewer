@@ -91,7 +91,7 @@ class Turtle extends React.Component{
         this.setState({
             facing:facing, lastX:lastX, lastY:lastY, maxX:maxX, minX:minX, maxY:maxY, minY:minY
         });
-        minX--;
+        minX=-20;
         minY--;
         return {result, minX, minY};
     }

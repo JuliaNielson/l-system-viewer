@@ -44,7 +44,9 @@ class LSystemPane extends React.Component {
         this.editSymbolRule = this.editSymbolRule.bind(this);
     }
 
-    
+    componentDidMount(){
+        document.body.classList.add("Body-format");
+    }
     
     render(){
         return (

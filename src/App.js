@@ -3,7 +3,7 @@ import LSystemPane from './components/LSystemPane';
 
 function App() {
   return (
-    <LSystemPane/>
+    <LSystemPane className="L-system-pane"/>
   );
 }
 
