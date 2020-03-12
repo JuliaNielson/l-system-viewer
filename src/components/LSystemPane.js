@@ -109,7 +109,7 @@ class LSystemPane extends React.Component {
                 }
             }));
     }
-
+    //consider always having an empty new rule and doing away with the button
     addRuleHandler(e){
         let rules = this.state.ruleState.symbolRules;
         let newRule = this.getNewRule(rules);
@@ -128,7 +128,8 @@ class LSystemPane extends React.Component {
         return {
             ruleIndex: nextIndex,
             symbol: '',
-            replacementRule:""
+            replacementRule:"",
+            drawRule:"None"
         }
     }
 }

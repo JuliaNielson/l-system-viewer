@@ -22,16 +22,25 @@ class ViewPane extends React.Component {
 
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext('2d');
-        this.fitToContainer(canvas);
+        
         if (ruleString)
         {
             let turtle = new Turtle(this.props);
             let p = turtle.getPath(ruleString);
+            canvas.width = p.width;
+            canvas.height = p.height;
             ctx.translate(p.minX*-1, p.minY*-1);
             ctx.stroke(p.result);
         }
         
     }
+    
+    // fitToContainer(canvas){
+    //     const viewDiv = document.getElementById("viewPane");
+    //     canvas.width = viewDiv.offsetWidth;
+    //     canvas.height = viewDiv.offsetHeight;
+
+    // }
 
     findReplacementRuleBySymbol(rules, symbol){
         const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
@@ -67,13 +76,6 @@ class ViewPane extends React.Component {
         });
 
         return resultString;
-    }
-
-    fitToContainer(canvas){
-        const viewDiv = document.getElementById("viewPane");
-        canvas.width = viewDiv.offsetWidth;
-        canvas.height = viewDiv.offsetHeight;
-
     }
     
     render(){

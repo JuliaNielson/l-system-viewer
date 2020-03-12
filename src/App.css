@@ -42,17 +42,21 @@
   height: 100%;
   position:fixed;
   float: left;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 .View-pane{
   width: 70%;
+  height: 100%;
   word-wrap: break-word;
   min-height: 100vh;
   float: right;
+  position:fixed;
+  right:0;
   background-color : #ffbad2;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 @keyframes App-logo-spin {

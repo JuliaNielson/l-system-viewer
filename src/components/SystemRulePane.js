@@ -16,7 +16,7 @@ class SystemRulePane extends Component{
         this.props.ruleState.symbolRules.forEach((rule)=>{
             rules.push(
                 <SystemRuleInput 
-                    key={rule.index} 
+                    key={rule.ruleIndex} 
                     index={rule.ruleIndex} 
                     rule={rule} 
                     handleChange={this.props.formHandler}

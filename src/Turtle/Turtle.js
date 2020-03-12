@@ -4,15 +4,6 @@ class Turtle extends React.Component{
     constructor(props)
     {   
         super(props);
-        // this.state = {
-        //     lastX:0, 
-        //     maxX:0, 
-        //     minX:0,
-        //     lastY:0, 
-        //     maxY:0, 
-        //     minY:0,
-        //     facing:-90
-        // }
         this.state = {
             lastX:320, 
             maxX:320, 
@@ -24,8 +15,6 @@ class Turtle extends React.Component{
         }
 
         this.getPath = this.getPath.bind(this);
-        this.getMinX = this.getMinX.bind(this);
-        this.getMinY = this.getMinY.bind(this);
     }
 
     getAsRadians(degrees){
@@ -36,13 +25,6 @@ class Turtle extends React.Component{
         const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
         return resultRule ? resultRule.drawRule : "";
     }
-
-    getMinX(){
-        return this.state.minX;
-    }
-    getMinY(){
-        return this.state.minY;
-    };
 
     getPath(ruleString){
         let result = new Path2D();
@@ -85,15 +67,25 @@ class Turtle extends React.Component{
                 else if(newY < minY){
                     minY = newY;
                 }
-                
             }
         });
+
         this.setState({
-            facing:facing, lastX:lastX, lastY:lastY, maxX:maxX, minX:minX, maxY:maxY, minY:minY
+            facing:facing, 
+            lastX:lastX, 
+            lastY:lastY, 
+            maxX:maxX, 
+            minX:minX, 
+            maxY:maxY, 
+            minY:minY
         });
-        minX=-20;
+
+        minX = minX - 20;
         minY--;
-        return {result, minX, minY};
+        let width = maxX - minX + 20 ;
+        let height = maxY - minY + 20;
+
+        return {result, minX, minY, width, height};
     }
 
 }
