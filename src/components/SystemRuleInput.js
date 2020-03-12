@@ -14,7 +14,7 @@ class SystemRuleInput extends Component{
         return(
             <tr>
                 <td>
-                    <input type="Text" className="symbol" id={this.props.index} value={this.props.rule.symbol} onChange = {this.props.handleChange}/>
+                    <input type="Text" className="symbol" maxLength="1" id={this.props.index} value={this.props.rule.symbol} onChange = {this.props.handleChange}/>
                 </td>
                 <td>
                     <input type="Text" className="replacementRule" id={this.props.index} value={this.props.rule.replacementRule} onChange = {this.props.handleChange}/>

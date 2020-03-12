@@ -32,28 +32,30 @@ class SystemRulePane extends Component{
             );
             
         }
-
+        let axiomDescription = "One or more characters used to define the starting point of the system.";
+        let iterationDescription = "A number defining how many times to run the defined string through the replacement process.";
+        let symbolDescription = "A single character identifing a replacement rule and a drawing rule";
 
         return (
-            <div>
-            <table>
+            <div> 
+            <table align="center">
                 <tbody>                
                     <tr>
-                        <td>Axiom</td>
-                        <td>Iterations</td>
+                        <td title={axiomDescription}>Axiom</td>
+                        <td title={iterationDescription}>Iterations</td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="Text" value={this.props.ruleState.axiom} className="axiom" onChange={this.props.formHandler}/>
+                            <input type="Text" className="axiom" title={axiomDescription} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
                         </td>
                         <td>
-                            <select value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
+                            <select title={iterationDescription} value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
                                 {iterationsDropDown}
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td title={symbolDescription}>
                             Symbol
                         </td>
                         <td>

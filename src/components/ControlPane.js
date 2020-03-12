@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from '../logo.svg';
 import '../App.css';
 import SystemRulePane from './SystemRulePane';
 
@@ -8,18 +7,19 @@ class ControlPane extends Component {
         return (
             <div className="Control-pane">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 <p style={{ textAlign: 'center'}}>
                 Welcome to Nielson's Lindenmeyer System Viewer
                 </p>
-                <SystemRulePane 
+            </header>
+            <p>Mouse over an input option to get an explanation of its purpose. For a greater understanding of Lindenmeyer Systems, see : (update with link to wikipedia)</p>
+                <SystemRulePane
+                    className = "System-rule-pane"
                     handleDrawButton={this.props.handleDrawButton} 
                     ruleState={this.props.ruleState} 
                     formHandler={this.props.formHandler} 
                     addRuleHandler={this.props.addRuleHandler}
                 />
                 
-            </header>
             </div>
         );
     }
