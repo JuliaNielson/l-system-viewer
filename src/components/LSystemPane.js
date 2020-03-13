@@ -1,19 +1,22 @@
 import React from 'react';
 import ViewPane from './ViewPane';
 import ControlPane from './ControlPane';
-import SampleSystems from '../data/SampleSystems.json'
+
+import SampleSystems from '../data/SampleSystems.json';
 
 class LSystemPane extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            ruleState: SampleSystems.hilbertCurve,
+            ruleState: SampleSystems.sampleSystems[0],
             ruleString : ""
         }
         this.handleDrawButton = this.handleDrawButton.bind(this);
         this.addRuleHandler = this.addRuleHandler.bind(this);
         this.handleForm = this.handleForm.bind(this);
         this.editSymbolRule = this.editSymbolRule.bind(this);
+        this.getSystemByDisplayName = this.getSystemByDisplayName.bind(this);
+        this.loadSystem = this.loadSystem.bind(this);
     }
 
     componentDidMount(){
@@ -28,26 +31,28 @@ class LSystemPane extends React.Component {
                     ruleState={this.state.ruleState} 
                     formHandler={this.handleForm}
                     addRuleHandler={this.addRuleHandler}
+                    loadSystem={this.loadSystem}
                 ></ControlPane>
                 <ViewPane ref="viewPane"
                     ruleString={this.state.ruleString} 
                     ruleState={this.state.ruleState}
                 ></ViewPane>
-                <SystemSelector>
-                    
-                </SystemSelector>
             </div>
         );
     }
 
     handleDrawButton(){
-        
         this.refs.viewPane.updateCanvas();
     }
 
     findRuleByIndex(rules, index){
         const resultRule = rules.find((rule)=>{return rule.ruleIndex === index});
         return resultRule;
+    }
+
+    getSystemByDisplayName(e){
+        const resultSystem = SampleSystems.sampleSystems.find((system)=> {return system.displayName === e.target.value});
+        return resultSystem;
     }
 
     handleForm(e){
@@ -63,6 +68,13 @@ class LSystemPane extends React.Component {
                 }
             }));
         }
+    }
+
+    loadSystem(e){
+        let ruleState = this.getSystemByDisplayName(e);
+        this.setState({ruleState:ruleState}, this.handleDrawButton);
+        
+
     }
 
     editSymbolRule(e){

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import SystemRulePane from './SystemRulePane';
+import SystemSelector from './SystemSelector';
 
 class ControlPane extends Component {
     render(){
@@ -23,6 +24,14 @@ class ControlPane extends Component {
                     formHandler={this.props.formHandler} 
                     addRuleHandler={this.props.addRuleHandler}
                 />
+                
+                <SystemSelector
+                    ruleState={this.props.ruleState}
+                    loadSystem={this.props.loadSystem}
+
+                >
+
+                </SystemSelector>
                 
             </div>
         );
