@@ -11,7 +11,11 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: white;
+}
+
+a:visited{
+  color:white;
 }
 
 .Body-format{
@@ -37,7 +41,7 @@
   position:fixed;
   float: left;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .View-pane{
@@ -51,5 +55,28 @@
   background-color : #ffbad2;
   overflow-y: auto;
   overflow-x: auto;
+}
+/* from w3schools */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 

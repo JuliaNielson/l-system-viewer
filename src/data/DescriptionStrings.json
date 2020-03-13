@@ -1,0 +1,7 @@
+{
+    "axiom" : "One or more characters used to define the starting point of the system.",
+    "iterations" : "A number defining how many times to run the defined string through the replacement process.",
+    "symbol" : "A single character identifing a replacement rule and a drawing rule.",
+    "replacementRule" : "A string that replaces a given symbol when iterating.",
+    "drawRule" : "What the drawing program does when it reads this character."  
+}

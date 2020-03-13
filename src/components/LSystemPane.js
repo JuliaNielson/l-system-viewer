@@ -1,41 +1,13 @@
 import React from 'react';
 import ViewPane from './ViewPane';
 import ControlPane from './ControlPane';
+import SampleSystems from '../data/SampleSystems.json'
 
 class LSystemPane extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            ruleState: {
-                symbolRules: [{
-                    ruleIndex: 0,
-                    symbol: 'a',
-                    replacementRule:"ebcdacadcbe",
-                    drawRule:"None"
-                },{
-                    ruleIndex: 1,
-                    symbol: 'b',
-                    replacementRule:"dacebcbecad",
-                    drawRule:"None"
-                },{
-                    ruleIndex: 2,
-                    symbol: 'c',
-                    replacementRule:"c",
-                    drawRule:"Move"
-                },{
-                    ruleIndex: 3,
-                    symbol: 'd',
-                    replacementRule:"d",
-                    drawRule:"AnglePos"
-                },{
-                    ruleIndex: 4,
-                    symbol: 'e',
-                    replacementRule:"e",
-                    drawRule:"AngleNeg"
-                }],
-                axiom : "a",
-                iterations : 5
-            },
+            ruleState: SampleSystems.hilbertCurve,
             ruleString : ""
         }
         this.handleDrawButton = this.handleDrawButton.bind(this);
@@ -61,6 +33,9 @@ class LSystemPane extends React.Component {
                     ruleString={this.state.ruleString} 
                     ruleState={this.state.ruleState}
                 ></ViewPane>
+                <SystemSelector>
+                    
+                </SystemSelector>
             </div>
         );
     }

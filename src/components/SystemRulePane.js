@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import SystemRuleInput from './SystemRuleInput';
+import DescriptionStrings from '../data/DescriptionStrings.json'
+
 
 class SystemRulePane extends Component{
     constructor(props){
@@ -13,6 +15,7 @@ class SystemRulePane extends Component{
 
     render(){
         const rules = [];
+
         this.props.ruleState.symbolRules.forEach((rule)=>{
             rules.push(
                 <SystemRuleInput 
@@ -32,34 +35,34 @@ class SystemRulePane extends Component{
             );
             
         }
-        let axiomDescription = "One or more characters used to define the starting point of the system.";
-        let iterationDescription = "A number defining how many times to run the defined string through the replacement process.";
-        let symbolDescription = "A single character identifing a replacement rule and a drawing rule";
 
         return (
             <div> 
             <table align="center">
                 <tbody>                
                     <tr>
-                        <td title={axiomDescription}>Axiom</td>
-                        <td title={iterationDescription}>Iterations</td>
+                        <td title={DescriptionStrings.axiom}>Axiom</td>
+                        <td title={DescriptionStrings.iterations}>Iterations</td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="Text" className="axiom" title={axiomDescription} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
+                            <input type="Text" className="axiom" title={DescriptionStrings.axiom} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
                         </td>
                         <td>
-                            <select title={iterationDescription} value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
+                            <select title={DescriptionStrings.iterations} value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
                                 {iterationsDropDown}
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td title={symbolDescription}>
+                        <td title={DescriptionStrings.symbol}>
                             Symbol
                         </td>
-                        <td>
-                            Rule
+                        <td title={DescriptionStrings.replacementRule}>
+                            Replacement Rule
+                        </td>
+                        <td title={DescriptionStrings.drawRule}>
+                            Draw Rule
                         </td>
                     </tr>
 
