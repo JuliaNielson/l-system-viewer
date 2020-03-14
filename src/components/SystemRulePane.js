@@ -64,6 +64,7 @@ class SystemRulePane extends Component{
                         <td title={DescriptionStrings.drawRule}>
                             Draw Rule
                         </td>
+                        <td title={DescriptionStrings.drawRuleParameterHeader}>Draw Rule Parameter</td>
                     </tr>
 
                     {rules}

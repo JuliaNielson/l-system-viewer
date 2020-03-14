@@ -37,19 +37,21 @@ class Turtle extends React.Component{
         let minY = this.state.minY;
         result.moveTo(lastX, lastY);
         ruleString.split("").forEach((charr) => {
-            let nextType = this.findDrawRuleBySymbol(this.props.ruleState.symbolRules, charr);
-            if("None" === nextType){
+            let nextInstruction = this.findDrawRuleBySymbol(this.props.ruleState.symbolRules, charr);
+            if("None" === nextInstruction.type){
                 //no-op
             }
-            else if("AnglePos" === nextType){
-                facing += 90;
+            else if("AnglePos" === nextInstruction.type){
+                facing += nextInstruction.value;
             }
-            else if("AngleNeg" === nextType){
-                facing -= 90;
+            else if("AngleNeg" === nextInstruction.type){
+                facing -= nextInstruction.value;
             }
-            else if("Move" === nextType){
-                let newX = lastX + (10 * Math.cos(this.getAsRadians(facing)));
-                let newY = lastY + (10 * Math.sin(this.getAsRadians(facing)));
+            else if("Move" === nextInstruction.type){
+                let moveLength = nextInstruction.value;
+
+                let newX = lastX + (moveLength * Math.cos(this.getAsRadians(facing)));
+                let newY = lastY + (moveLength * Math.sin(this.getAsRadians(facing)));
 
                 result.lineTo(newX, newY);
                 lastX = newX;

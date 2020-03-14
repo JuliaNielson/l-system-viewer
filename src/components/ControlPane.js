@@ -27,11 +27,9 @@ class ControlPane extends Component {
                 
                 <SystemSelector
                     ruleState={this.props.ruleState}
+                    // come back and use this displayName = {this.props.ruleState.displayName}
                     loadSystem={this.props.loadSystem}
-
-                >
-
-                </SystemSelector>
+                ></SystemSelector>
                 
             </div>
         );

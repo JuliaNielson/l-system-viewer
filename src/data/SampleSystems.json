@@ -1,84 +1,121 @@
 {
-    "sampleSystems" :[ {
+    "sampleSystems" :[ 
+        {
+        "displayName" : "Hilbert Curve",
         "symbolRules": [{
             "ruleIndex": 0,
             "symbol": "a",
             "replacementRule":"ebcdacadcbe",
-            "drawRule":"None"
+            "drawRule":{
+                "type":"None"
+            }
         },{
             "ruleIndex": 1,
             "symbol": "b",
             "replacementRule":"dacebcbecad",
-            "drawRule":"None"
+            "drawRule":{
+                "type":"None"
+            }
         },{
             "ruleIndex": 2,
             "symbol": "c",
-            "replacementRule":"c",
-            "drawRule":"Move"
+            "replacementRule":"c",            
+            "drawRule":{
+                "type": "Move",
+                "value": 10
+            }
         },{
             "ruleIndex": 3,
             "symbol": "d",
             "replacementRule":"d",
-            "drawRule":"AnglePos"
+            "drawRule":{
+                "type":"AnglePos",
+                "value":90
+            }
         },{
             "ruleIndex": 4,
             "symbol": "e",
             "replacementRule":"e",
-            "drawRule":"AngleNeg"
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":90
+            }
         }],
         "axiom" : "a",
-        "iterations" : 5,
-        "displayName" : "Hilbert Curve"
+        "iterations" : 5
     },{
+        "displayName" : "Koch Curve",
         "symbolRules": [{
             "ruleIndex": 0,
             "symbol": "F",
             "replacementRule":"FLFRFRFLF",
-            "drawRule":"Move"
+            "drawRule":{
+                "type": "Move",
+                "value": 10
+            }
         },{
             "ruleIndex": 1,
             "symbol": "R",
             "replacementRule":"R",
-            "drawRule":"AnglePos"
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":90
+            }
         },{
             "ruleIndex": 2,
             "symbol": "L",
             "replacementRule":"L",
-            "drawRule":"AngleNeg"
+            "drawRule":{
+                "type":"AnglePos",
+                "value":90
+            }
         }],
         "axiom" : "F",
-        "iterations" : 4,
-        "displayName" : "Koch Curve"
+        "iterations" : 4
     },{
+        
+        "displayName" : "Dragon curve",
         "symbolRules": [{
             "ruleIndex": 0,
             "symbol": "F",
             "replacementRule":"F",
-            "drawRule":"Move"
+            "drawRule":{
+                "type": "Move",
+                "value": 10
+            }
         },{
             "ruleIndex": 1,
             "symbol": "X",
             "replacementRule":"XRYFR",
-            "drawRule":"None"
+            "drawRule":{
+                "type":"None"
+            }
         },{
             "ruleIndex": 2,
             "symbol": "Y",
             "replacementRule":"LFXLY",
-            "drawRule":"None"
+            "drawRule":{
+                "type":"None"
+            }
         },{
             "ruleIndex": 3,
             "symbol": "R",
             "replacementRule":"R",
-            "drawRule":"AnglePos"
+            "drawRule":{
+                "type":"AnglePos",
+                "value":90
+            }
         },{
             "ruleIndex": 4,
             "symbol": "L",
             "replacementRule":"L",
-            "drawRule":"AngleNeg"
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":90
+            }
         }],
         "axiom" : "FX",
-        "iterations" : 10,
-        "displayName" : "Dragon curve"
+        "iterations" : 10
     }
 
 ]

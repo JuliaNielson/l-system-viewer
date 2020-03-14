@@ -11,6 +11,7 @@ class LSystemPane extends React.Component {
             ruleState: SampleSystems.sampleSystems[0],
             ruleString : ""
         }
+        
         this.handleDrawButton = this.handleDrawButton.bind(this);
         this.addRuleHandler = this.addRuleHandler.bind(this);
         this.handleForm = this.handleForm.bind(this);
@@ -19,9 +20,9 @@ class LSystemPane extends React.Component {
         this.loadSystem = this.loadSystem.bind(this);
     }
 
-    componentDidMount(){
-        document.body.classList.add("Body-format");
-    }
+    // componentDidMount(){
+    //     document.body.classList.add("Body-format");
+    // } delete when verfied that scrolling still works correctly
     
     render(){
         return (
@@ -57,8 +58,11 @@ class LSystemPane extends React.Component {
 
     handleForm(e){
         e.persist();
-        if (["symbol", "replacementRule", "drawRule"].includes(e.target.className)){
+        if (["symbol", "replacementRule"].includes(e.target.className)){
             this.editSymbolRule(e);
+        }
+        else if(["drawRuleType","drawRuleValue"].includes(e.target.className)){
+            this.editDrawRule(e);
         }
         else if(["axiom", "iterations"].includes(e.target.className)){
             this.setState(prevState => ({
@@ -79,23 +83,59 @@ class LSystemPane extends React.Component {
 
     editSymbolRule(e){
         let rules = [...this.state.ruleState.symbolRules];
-            let index = parseInt(e.target.id, 10);
+        let index = parseInt(e.target.id, 10);
+        
+        //to-do: De-duplicate this and below use
+        let changedRule = this.findRuleByIndex(rules, index);
+        changedRule = {
+            ...changedRule,
+            [e.target.className]:e.target.value
+        }
 
-            let changedRule = this.findRuleByIndex(rules, index);
-            changedRule = {
-                ...changedRule,
-                [e.target.className]:e.target.value
+        let newRules = rules;
+        newRules.splice(index, 1, changedRule);
+        this.setState(prevState => ({
+            ruleState:{
+                ...prevState.ruleState,
+                symbolRules: newRules                    
             }
-
-            let newRules = rules;
-            newRules.splice(index, 1, changedRule);
-            this.setState(prevState => ({
-                ruleState:{
-                    ...prevState.ruleState,
-                    symbolRules: newRules                    
-                }
-            }));
+        }));
     }
+
+    editDrawRule(e){
+        let rules = [...this.state.ruleState.symbolRules];
+        let index = parseInt(e.target.id, 10);
+
+        let changedRule = this.findRuleByIndex(rules, index);
+        let drawRule = changedRule.drawRule;
+        if ("drawRuleType"===e.target.className){
+            let defaultValue = e.target.value === "Move" ? 10 : 90;
+            drawRule = {
+                type : e.target.value,
+                value : defaultValue,
+            }
+        }
+        else{
+            drawRule = {
+                ...drawRule,
+                value: parseInt(e.target.value, 10)
+            }
+        }
+
+        changedRule = {
+            ...changedRule,
+            drawRule:drawRule
+        }
+
+        let newRules = rules;
+        newRules.splice(index, 1, changedRule);
+        this.setState(prevState => ({
+            ruleState:{
+                ...prevState.ruleState,
+                symbolRules: newRules                    
+            }}));
+    }
+
     //consider always having an empty new rule and doing away with the button
     addRuleHandler(e){
         let rules = this.state.ruleState.symbolRules;
@@ -116,7 +156,7 @@ class LSystemPane extends React.Component {
             ruleIndex: nextIndex,
             symbol: '',
             replacementRule:"",
-            drawRule:"None"
+            drawRule: {type:"None"}
         }
     }
 }

@@ -3,5 +3,6 @@
     "iterations" : "A number defining how many times to run the defined string through the replacement process.",
     "symbol" : "A single character identifing a replacement rule and a drawing rule.",
     "replacementRule" : "A string that replaces a given symbol when iterating.",
-    "drawRule" : "What the drawing program does when it reads this character."  
+    "drawRule" : "What the drawing program does when it reads this character." ,
+    "drawRuleParameterHeader": "How far to move or turn (in angles)" 
 }
