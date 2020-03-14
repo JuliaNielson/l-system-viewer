@@ -42,7 +42,8 @@
             }
         }],
         "axiom" : "a",
-        "iterations" : 5
+        "iterations" : 5,
+        "facing" : -90
     },{
         "displayName" : "Koch Curve",
         "symbolRules": [{
@@ -55,23 +56,24 @@
             }
         },{
             "ruleIndex": 1,
-            "symbol": "R",
-            "replacementRule":"R",
+            "symbol": "L",
+            "replacementRule":"L",
             "drawRule":{
                 "type":"AngleNeg",
                 "value":90
             }
         },{
             "ruleIndex": 2,
-            "symbol": "L",
-            "replacementRule":"L",
+            "symbol": "R",
+            "replacementRule":"R",
             "drawRule":{
                 "type":"AnglePos",
                 "value":90
             }
         }],
         "axiom" : "F",
-        "iterations" : 4
+        "iterations" : 4,
+        "facing":0
     },{
         
         "displayName" : "Dragon curve",
@@ -115,7 +117,8 @@
             }
         }],
         "axiom" : "FX",
-        "iterations" : 10
+        "iterations" : 10,
+        "facing" : -90
     }
 
 ]

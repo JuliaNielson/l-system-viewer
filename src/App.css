@@ -56,27 +56,9 @@ a:visited{
   overflow-y: auto;
   overflow-x: auto;
 }
-/* from w3schools */
-.tooltip {
-  position: relative;
-  display: inline-block;
+.facing{
+  width: 4em
 }
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
- 
-  position: absolute;
-  z-index: 1;
+.drawRuleValue{
+  width: 4em
 }
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-

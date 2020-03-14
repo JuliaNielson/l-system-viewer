@@ -28,6 +28,7 @@ class SystemRuleInput extends Component{
                         type="Text" 
                         className="symbol" 
                         maxLength="1" 
+                        size="2"
                         id={this.props.index}
                         title={DescriptionStrings.symbol} 
                         value={this.props.rule.symbol} 

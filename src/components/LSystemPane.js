@@ -48,7 +48,7 @@ class LSystemPane extends React.Component {
         else if(["drawRuleType","drawRuleValue"].includes(e.target.className)){
             this.editDrawRule(e);
         }
-        else if(["axiom", "iterations"].includes(e.target.className)){
+        else if(["axiom", "iterations","facing"].includes(e.target.className)){
             this.setState(prevState => ({
                 ruleState:{
                     ...prevState.ruleState,

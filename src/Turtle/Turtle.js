@@ -4,7 +4,6 @@ class Turtle extends React.Component{
     constructor(props)
     {   
         super(props);
-        let facing = -90;
         this.state = {
             lastX:0, 
             maxX:0, 
@@ -12,7 +11,7 @@ class Turtle extends React.Component{
             lastY:0, 
             maxY:0, 
             minY:0,
-            facing:facing
+            facing:props.ruleState.facing
         }
 
         this.getPath = this.getPath.bind(this);
@@ -66,7 +65,7 @@ class Turtle extends React.Component{
                 
             }
         });
-        
+
         this.setState({
             facing:facing, 
             lastX:lastX, 

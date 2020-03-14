@@ -30,17 +30,21 @@ class SystemRulePane extends Component{
             <table align="center">
                 <tbody>                
                     <tr>
-                        <td title={DescriptionStrings.axiom}>Axiom</td>
                         <td title={DescriptionStrings.iterations}>Iterations</td>
+                        <td title={DescriptionStrings.axiom}>Axiom</td>
+                        <td title={DescriptionStrings.facing}>Initial Facing</td>
                     </tr>
                     <tr>
-                        <td>
-                            <input type="Text" className="axiom" title={DescriptionStrings.axiom} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
-                        </td>
                         <td>
                             <select title={DescriptionStrings.iterations} value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
                                 {iterationsDropDown}
                             </select>
+                        </td>
+                        <td>
+                            <input type="Text" className="axiom" title={DescriptionStrings.axiom} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
+                        </td>
+                        <td>
+                            <input type="Number" max={360} min={-360} className="facing" title={DescriptionStrings.facing} value={this.props.ruleState.facing} onChange={this.props.formHandler}/>
                         </td>
                     </tr>
                     <tr>
@@ -54,7 +58,7 @@ class SystemRulePane extends Component{
                             Draw Rule
                         </td>
                         <td title={DescriptionStrings.drawRuleParameterHeader}>
-                            Draw Rule Parameter
+                            Draw Rule <br/> Parameter
                         </td>
                     </tr>
 
@@ -62,10 +66,13 @@ class SystemRulePane extends Component{
 
                     <tr>
                         <td>
-                            <button onClick={this.props.addRuleHandler}>New Rule</button>
+
                         </td>
                         <td>
                             <button onClick={this.props.handleDrawButton}>Draw System</button>
+                        </td>
+                        <td>
+                            <button onClick={this.props.addRuleHandler}>New Rule</button>
                         </td>
                     </tr>
                 </tbody>
