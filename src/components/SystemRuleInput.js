@@ -19,15 +19,13 @@ class SystemRuleInput extends Component{
               <option key={rule} value={rule.type}>{rule.type}</option>  
             );
         });
-        let ruleValueContent = this.props.rule.drawRule.value ?
+        let ruleValueContent = this.props.rule.drawRule.type==="None" ? "":
             <input type="Text" 
             className="drawRuleValue" 
             title={DescriptionStrings.drawRuleParameterHeader}
             id={this.props.index}
             value={this.props.rule.drawRule.value} 
-            onChange={this.props.handleChange}/>
-            :
-            "";
+            onChange={this.props.handleChange}/>;
         
 
         return(

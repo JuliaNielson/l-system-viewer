@@ -116,9 +116,10 @@ class LSystemPane extends React.Component {
             }
         }
         else{
+            let newValue = e.target.value ? parseInt(e.target.value, 10) : 0;
             drawRule = {
                 ...drawRule,
-                value: parseInt(e.target.value, 10)
+                value: newValue
             }
         }
 
