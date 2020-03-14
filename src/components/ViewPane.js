@@ -18,6 +18,7 @@ class ViewPane extends React.Component {
         this.updateCanvas();
     }
     updateCanvas(){
+
         let ruleString = this.generateString();
 
         const canvas = this.refs.canvas;
@@ -35,13 +36,6 @@ class ViewPane extends React.Component {
         
     }
     
-    // fitToContainer(canvas){
-    //     const viewDiv = document.getElementById("viewPane");
-    //     canvas.width = viewDiv.offsetWidth;
-    //     canvas.height = viewDiv.offsetHeight;
-
-    // }
-
     findReplacementRuleBySymbol(rules, symbol){
         const resultRule = rules.find((rule)=>{return rule.symbol === symbol});
         return resultRule ? resultRule.replacementRule : symbol;
@@ -63,8 +57,9 @@ class ViewPane extends React.Component {
                 resultString = workString;
             }
             else{
+                let newMessage = "That drawing may cause your browser to slow down, so it was canceled instead. Try using a value of " + (ii) + " for the iterations."
                 this.setState({
-                    message: "That drawing may cause your browser to slow down, so it was canceled instead. Try using a smaller value for the iterations."
+                    message: newMessage
                 });
                 return axiom;
             }
@@ -79,11 +74,11 @@ class ViewPane extends React.Component {
     }
     
     render(){
-        let breakk = this.state.message === null ? "" : <br/>;
+        let newLine = this.state.message === null ? "" : <br/>;
         return (
             <div className="View-pane" id="viewPane">
                 {this.state.message}
-                {breakk}
+                {newLine}
                 <canvas ref="canvas">
                 Your browser does not support the HTML5 canvas tag or you're looking at a search engine preview or something.
                 </canvas>

@@ -7,18 +7,16 @@ class SystemSelector extends React.Component{
         let systemSelections =[];
         SampleSystems.sampleSystems.forEach((element)=>{
             systemSelections.push(
-                <option 
-                    key={element.displayName} 
-                    value={element.displayName}>
-                        {element.displayName}
-                </option>
+                <option key={element.displayName}> {element.displayName}</option>
             );
-        })
-        return (<div>
-            <select className="ruleState" value={this.props.ruleState.displayName} onChange={this.props.loadSystem}>
-                {systemSelections}
-            </select>
-        </div>
+        });
+        
+        return (
+            <div>
+                <select className="ruleState" value={this.props.displayName} onChange={this.props.loadSystem}>
+                    {systemSelections}
+                </select>
+            </div>
         );
     }
 }

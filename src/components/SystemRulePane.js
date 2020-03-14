@@ -4,20 +4,10 @@ import DescriptionStrings from '../data/DescriptionStrings.json'
 
 
 class SystemRulePane extends Component{
-    constructor(props){
-        super(props)
-        this.handleDrawSystem = this.handleDrawSystem.bind(this);
-    }
-
-    handleDrawSystem(){
-        this.props.handleDrawButton();
-    }
-
     render(){
-        const rules = [];
-
+        const ruleInputs = [];
         this.props.ruleState.symbolRules.forEach((rule)=>{
-            rules.push(
+            ruleInputs.push(
                 <SystemRuleInput 
                     key={rule.ruleIndex} 
                     index={rule.ruleIndex} 
@@ -25,7 +15,6 @@ class SystemRulePane extends Component{
                     handleChange={this.props.formHandler}
                 />
             );
-
         });
 
         const iterationsDropDown = [];
@@ -64,17 +53,19 @@ class SystemRulePane extends Component{
                         <td title={DescriptionStrings.drawRule}>
                             Draw Rule
                         </td>
-                        <td title={DescriptionStrings.drawRuleParameterHeader}>Draw Rule Parameter</td>
+                        <td title={DescriptionStrings.drawRuleParameterHeader}>
+                            Draw Rule Parameter
+                        </td>
                     </tr>
 
-                    {rules}
+                    {ruleInputs}
 
                     <tr>
                         <td>
                             <button onClick={this.props.addRuleHandler}>New Rule</button>
                         </td>
                         <td>
-                            <button onClick={this.handleDrawSystem}>Draw System</button>
+                            <button onClick={this.props.handleDrawButton}>Draw System</button>
                         </td>
                     </tr>
                 </tbody>

@@ -4,14 +4,15 @@ class Turtle extends React.Component{
     constructor(props)
     {   
         super(props);
+        let facing = -90;
         this.state = {
-            lastX:320, 
-            maxX:320, 
-            minX:320,
-            lastY:320, 
-            maxY:320, 
-            minY:320,
-            facing:-90
+            lastX:0, 
+            maxX:0, 
+            minX:0,
+            lastY:0, 
+            maxY:0, 
+            minY:0,
+            facing:facing
         }
 
         this.getPath = this.getPath.bind(this);
@@ -57,21 +58,15 @@ class Turtle extends React.Component{
                 lastX = newX;
                 lastY = newY;
 
-                if (newX > maxX){
-                    maxX = newX;
-                }
-                else if(newX<minX){
-                    minX = newX;
-                }
-                if(newY > maxY){
-                    maxY = newY;
-                }
-                else if(newY < minY){
-                    minY = newY;
-                }
+                maxX = Math.max(newX, maxX);
+                minX = Math.min(newX,minX);
+                
+                maxY = Math.max(newY, maxY);
+                minY = Math.min(newY,minY);
+                
             }
         });
-
+        
         this.setState({
             facing:facing, 
             lastX:lastX, 
