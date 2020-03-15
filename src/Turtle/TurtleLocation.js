@@ -1,8 +1,10 @@
 class TurtleLocation{
-    constructor({xCoordinate, yCoordinate, facing}){
+    constructor(xCoordinate, yCoordinate, facing){
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.facing = facing;
+
+
     }
 
     getXCoordinate(){

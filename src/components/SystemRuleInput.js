@@ -4,14 +4,15 @@ import DescriptionStrings from '../data/DescriptionStrings.json'
 class SystemRuleInput extends Component{
 
     render(){
-        let ruleTypes =["Move", "AnglePos", "AngleNeg", "None"]
+        let ruleTypes =["Move", "AnglePos", "AngleNeg", "SaveLocation", "LoadLocation", "None"]
         let ruleSelections = [];
         ruleTypes.forEach((ruleType)=>{
             ruleSelections.push(
               <option key={ruleType} value={ruleType}>{ruleType}</option>  
             );
         });
-        let ruleValueContent = this.props.rule.drawRule.type === "None" ? "" :
+        let ruleValueContent = ["Move", "AnglePos", "AngleNeg"].includes(this.props.rule.drawRule.type) 
+        ?
             <input 
                 type="Number" 
                 className="drawRuleValue" 
@@ -19,7 +20,9 @@ class SystemRuleInput extends Component{
                 id={this.props.index}
                 value={this.props.rule.drawRule.value} 
                 onChange={this.props.handleChange}
-            />; 
+            />
+        :
+             "" ; 
 
         return(
             <tr> 

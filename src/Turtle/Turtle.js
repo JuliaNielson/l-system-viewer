@@ -1,4 +1,5 @@
 import React from 'react'
+import TurtleLocation from './TurtleLocation'
 
 class Turtle extends React.Component{
     constructor(props)
@@ -11,7 +12,8 @@ class Turtle extends React.Component{
             lastY:0, 
             maxY:0, 
             minY:0,
-            facing:props.ruleState.facing
+            facing:props.ruleState.facing,
+            savedLocations : []
         }
 
         this.getPath = this.getPath.bind(this);
@@ -63,6 +65,24 @@ class Turtle extends React.Component{
                 maxY = Math.max(newY, maxY);
                 minY = Math.min(newY,minY);
                 
+            }
+            else if("SaveLocation" === nextInstruction.type){
+                let savedLocations = this.state.savedLocations;
+                let newLocation = new TurtleLocation(lastX, lastY, facing);
+                savedLocations.push(newLocation);
+
+                this.setState({savedLocations:savedLocations});
+            }
+            else if("LoadLocation" === nextInstruction.type){
+                let savedLocations = this.state.savedLocations;
+                let nextLocation = savedLocations.pop();
+                lastX = nextLocation.xCoordinate;
+                lastY = nextLocation.yCoordinate;
+                facing = nextLocation.facing;
+
+                result.moveTo(lastX, lastY);
+
+                this.setState({savedLocations:savedLocations});
             }
         });
 

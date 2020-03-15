@@ -119,6 +119,58 @@
         "axiom" : "FX",
         "iterations" : 10,
         "facing" : -90
+    },{
+        "displayName" : "Binary Tree",
+        "symbolRules": [{
+            "ruleIndex": 0,
+            "symbol": "A",
+            "replacementRule":"AA",
+            "drawRule":{
+                "type": "Move",
+                "value": 10
+            }
+        },{
+            "ruleIndex": 1,
+            "symbol": "B",
+            "replacementRule":"A[LB]RB",
+            "drawRule":{
+                "type":"Move",
+                "value":10
+            }
+        },{
+            "ruleIndex": 2,
+            "symbol": "[",
+            "replacementRule":"[",
+            "drawRule":{
+                "type":"SaveLocation"
+            }
+        },{
+            "ruleIndex": 3,
+            "symbol": "]",
+            "replacementRule":"]",
+            "drawRule":{
+                "type":"LoadLocation"
+            }
+        },{
+            "ruleIndex": 4,
+            "symbol": "R",
+            "replacementRule":"R",
+            "drawRule":{
+                "type":"AnglePos",
+                "value":45
+            }
+        },{
+            "ruleIndex": 5,
+            "symbol": "L",
+            "replacementRule":"L",
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":45
+            }
+        }],
+        "axiom" : "B",
+        "iterations" : 7,
+        "facing":-90
     }
 
 ]
