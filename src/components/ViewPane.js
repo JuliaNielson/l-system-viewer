@@ -48,7 +48,7 @@ class ViewPane extends React.Component {
         let resultString = axiom;
         for (let ii = 0; ii < iterations; ii++) {
             let workString = "";
-            if (resultString.length < 250000)
+            if (resultString.length < 250000 || (this.props.forceGenerate))
             {
                 resultString.split("").forEach(charr => {
                     workString += this.findReplacementRuleBySymbol(rules, charr);

@@ -38,10 +38,24 @@ class SystemRulePane extends Component{
                             />
                         </td>
                         <td>
-                            <input type="Text" className="axiom" title={DescriptionStrings.axiom} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>
+                            <input 
+                                type="Text" 
+                                className="axiom" 
+                                title={DescriptionStrings.axiom} 
+                                value={this.props.ruleState.axiom} 
+                                onChange={this.props.formHandler}
+                            />
                         </td>
                         <td>
-                            <input type="Number" max={360} min={-360} className="facing" title={DescriptionStrings.facing} value={this.props.ruleState.facing} onChange={this.props.formHandler}/>
+                            <input 
+                                type="Number" 
+                                max={360} 
+                                min={-360} 
+                                className="facing"
+                                title={DescriptionStrings.facing} 
+                                value={this.props.ruleState.facing} 
+                                onChange={this.props.formHandler}
+                            />
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +77,8 @@ class SystemRulePane extends Component{
 
                     <tr>
                         <td>
-
+                            <input type="Checkbox" className="forceGenerate" id="forceGenerate" onChange={this.props.formHandler} checked={this.props.forceGenerate}/>
+                            <label for="forceGenerate">Force large system</label>
                         </td>
                         <td>
                             <button onClick={this.props.handleDrawButton}>Draw System</button>

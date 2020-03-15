@@ -23,6 +23,7 @@ class ControlPane extends Component {
                     ruleState={this.props.ruleState} 
                     formHandler={this.props.formHandler} 
                     addRuleHandler={this.props.addRuleHandler}
+                    forceGenerate={this.props.forceGenerate}
                 />
                 
                 <SystemSelector

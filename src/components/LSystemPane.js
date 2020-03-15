@@ -8,7 +8,8 @@ class LSystemPane extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            ruleState: SampleSystems.sampleSystems[0]
+            ruleState: SampleSystems.sampleSystems[0],
+            forceGenerate: false
         }
         
         this.handleDrawButton = this.handleDrawButton.bind(this);
@@ -28,9 +29,11 @@ class LSystemPane extends React.Component {
                     formHandler={this.handleForm}
                     addRuleHandler={this.addRuleHandler}
                     loadSystem={this.loadSystem}
+                    forceGenerate={this.state.forceGenerate}
                 ></ControlPane>
                 <ViewPane ref="viewPane"
                     ruleState={this.state.ruleState}
+                    forceGenerate={this.state.forceGenerate}
                 ></ViewPane>
             </div>
         );
@@ -55,6 +58,9 @@ class LSystemPane extends React.Component {
                 [e.target.className] : e.target.value
                 }
             }));
+        }
+        else if(["forceGenerate"].includes(e.target.className)){
+            this.setState({[e.target.className] : e.target.checked})
         }
     }
 
