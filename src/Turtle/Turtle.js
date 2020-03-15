@@ -12,8 +12,7 @@ class Turtle extends React.Component{
             lastY:0, 
             maxY:0, 
             minY:0,
-            facing:props.ruleState.facing,
-            savedLocations : []
+            facing:parseInt(props.ruleState.facing,10)
         }
 
         this.getPath = this.getPath.bind(this);
@@ -37,6 +36,8 @@ class Turtle extends React.Component{
         let minX = this.state.minX;
         let maxY = this.state.maxY;
         let minY = this.state.minY;
+
+        let savedLocations = [];
         result.moveTo(lastX, lastY);
         ruleString.split("").forEach((charr) => {
             let nextInstruction = this.findDrawRuleBySymbol(this.props.ruleState.symbolRules, charr);
@@ -67,14 +68,10 @@ class Turtle extends React.Component{
                 
             }
             else if("SaveLocation" === nextInstruction.type){
-                let savedLocations = this.state.savedLocations;
                 let newLocation = new TurtleLocation(lastX, lastY, facing);
                 savedLocations.push(newLocation);
-
-                this.setState({savedLocations:savedLocations});
             }
             else if("LoadLocation" === nextInstruction.type){
-                let savedLocations = this.state.savedLocations;
                 let nextLocation = savedLocations.pop();
                 lastX = nextLocation.xCoordinate;
                 lastY = nextLocation.yCoordinate;
@@ -82,7 +79,6 @@ class Turtle extends React.Component{
 
                 result.moveTo(lastX, lastY);
 
-                this.setState({savedLocations:savedLocations});
             }
         });
 

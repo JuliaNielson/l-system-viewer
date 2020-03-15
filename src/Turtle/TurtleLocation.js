@@ -3,8 +3,6 @@ class TurtleLocation{
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.facing = facing;
-
-
     }
 
     getXCoordinate(){
