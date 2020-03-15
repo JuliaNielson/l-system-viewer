@@ -17,14 +17,6 @@ class SystemRulePane extends Component{
             );
         });
 
-        const iterationsDropDown = [];
-        for (let ii = 1; ii <= 20; ii++) {
-            iterationsDropDown.push(
-                <option key={ii} value={ii}>{ii}</option>
-            );
-            
-        }
-
         return (
             <div> 
             <table align="center">
@@ -36,9 +28,14 @@ class SystemRulePane extends Component{
                     </tr>
                     <tr>
                         <td>
-                            <select title={DescriptionStrings.iterations} value={this.props.ruleState.iterations} className="iterations" onChange={this.props.formHandler}>
-                                {iterationsDropDown}
-                            </select>
+                            <input 
+                                type="Number" 
+                                max={20} min={0}  
+                                title={DescriptionStrings.iterations} 
+                                value={this.props.ruleState.iterations} 
+                                className="iterations" 
+                                onChange={this.props.formHandler}
+                            />
                         </td>
                         <td>
                             <input type="Text" className="axiom" title={DescriptionStrings.axiom} value={this.props.ruleState.axiom} onChange={this.props.formHandler}/>

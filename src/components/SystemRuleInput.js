@@ -19,7 +19,7 @@ class SystemRuleInput extends Component{
                 id={this.props.index}
                 value={this.props.rule.drawRule.value} 
                 onChange={this.props.handleChange}
-            />;
+            />; 
 
         return(
             <tr> 
@@ -53,7 +53,6 @@ class SystemRuleInput extends Component{
                         title={DescriptionStrings.drawRule} 
                         value={this.props.rule.drawRule.type} 
                         onChange={this.props.handleChange}>
-
                             {ruleSelections}
                     </select>    
                 </td>

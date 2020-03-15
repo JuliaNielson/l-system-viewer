@@ -59,6 +59,9 @@ a:visited{
 .facing{
   width: 4em
 }
+.iterations{
+  width: 3em
+}
 .drawRuleValue{
   width: 4em
 }
