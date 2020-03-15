@@ -77,11 +77,13 @@ class SystemRulePane extends Component{
 
                     <tr>
                         <td>
-                            <input type="Checkbox" className="forceGenerate" id="forceGenerate" onChange={this.props.formHandler} checked={this.props.forceGenerate}/>
-                            <label for="forceGenerate">Force large system</label>
                         </td>
                         <td>
-                            <button onClick={this.props.handleDrawButton}>Draw System</button>
+                            <button onClick={this.props.handleDrawButton}>Draw System</button><br/>
+                            
+                            <input type="Checkbox" className="forceGenerate" id="forceGenerate" onChange={this.props.formHandler} checked={this.props.forceGenerate}/>
+                            <label for="forceGenerate">Force large system</label>
+                            
                         </td>
                         <td>
                             <button onClick={this.props.addRuleHandler}>New Rule</button>
