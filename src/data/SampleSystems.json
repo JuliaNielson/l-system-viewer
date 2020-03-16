@@ -75,7 +75,6 @@
         "iterations" : 4,
         "facing":0
     },{
-        
         "displayName" : "Dragon curve",
         "symbolRules": [{
             "ruleIndex": 0,
@@ -170,6 +169,57 @@
         }],
         "axiom" : "B",
         "iterations" : 7,
+        "facing":-90
+    },{
+        "displayName" : "Fractal Plant",
+        "symbolRules": [{
+            "ruleIndex": 0,
+            "symbol": "X",
+            "replacementRule":" FR[[X]LX]LF[LFX]RX",
+            "drawRule":{
+                "type": "None"
+            }
+        },{
+            "ruleIndex": 1,
+            "symbol": "F",
+            "replacementRule":"FF",
+            "drawRule":{
+                "type":"Move",
+                "value":10
+            }
+        },{
+            "ruleIndex": 2,
+            "symbol": "[",
+            "replacementRule":"[",
+            "drawRule":{
+                "type":"SaveLocation"
+            }
+        },{
+            "ruleIndex": 3,
+            "symbol": "]",
+            "replacementRule":"]",
+            "drawRule":{
+                "type":"LoadLocation"
+            }
+        },{
+            "ruleIndex": 4,
+            "symbol": "R",
+            "replacementRule":"R",
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":25
+            }
+        },{
+            "ruleIndex": 5,
+            "symbol": "L",
+            "replacementRule":"L",
+            "drawRule":{
+                "type":"AnglePos",
+                "value":25
+            }
+        }],
+        "axiom" : "X",
+        "iterations" : 5,
         "facing":-90
     },
     {
