@@ -171,7 +171,87 @@
         "axiom" : "B",
         "iterations" : 7,
         "facing":-90
+    },
+    {
+        "displayName" : "Penrose Tiling",
+        "symbolRules": [{
+            "ruleIndex": 0,
+            "symbol": "[",
+            "replacementRule":"[",
+            "drawRule":{
+                "type":"SaveLocation"
+            }
+        },{
+            "ruleIndex": 1,
+            "symbol": "]",
+            "replacementRule":"]",
+            "drawRule":{
+                "type":"LoadLocation"
+            }
+        },{
+            "ruleIndex": 2,
+            "symbol": "R",
+            "replacementRule":"R",
+            "drawRule":{
+                "type":"AnglePos",
+                "value":36
+            }
+        },{
+            "ruleIndex": 3,
+            "symbol": "L",
+            "replacementRule":"L",
+            "drawRule":{
+                "type":"AngleNeg",
+                "value":36
+            }
+        },{
+            "ruleIndex": 4,
+            "symbol": "A",
+            "replacementRule":"B",
+            "drawRule":{
+                "type":"Move",
+                "value":30
+            }
+        },{
+            "ruleIndex": 5,
+            "symbol": "B",
+            "replacementRule":"B",
+            "drawRule":{
+                "type":"None"
+            }
+        },{
+            "ruleIndex": 6,
+            "symbol": "M",
+            "replacementRule":"OARRPALLLLNA[LOALLLLMA]RR",
+            "drawRule":{
+                "type":"None"
+            }
+        },{
+            "ruleIndex": 7,
+            "symbol": "N",
+            "replacementRule":"ROALLPA[LLLMALLNA]R",
+            "drawRule":{
+                "type":"None"
+            }
+        },{
+            "ruleIndex": 8,
+            "symbol": "O",
+            "replacementRule":"LMARRNA[RRROARRPA]L",
+            "drawRule":{
+                "type":"None"
+            }
+        },{
+            "ruleIndex": 9,
+            "symbol": "P",
+            "replacementRule":"LLOARRRRMA[RPARRRRNA]LLNA",
+            "drawRule":{
+                "type":"None"
+            }
+        }
+    ],
+        "axiom" : "[N]RR[N]RR[N]RR[N]RR[N]",
+        "iterations" : 5,
+        "facing":0
     }
-
 ]
 }
