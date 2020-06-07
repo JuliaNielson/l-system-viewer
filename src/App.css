@@ -65,3 +65,6 @@ a:visited{
 .drawRuleValue{
   width: 4em
 }
+.removeRule{
+  width: 2em
+}

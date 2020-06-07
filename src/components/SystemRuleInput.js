@@ -20,12 +20,16 @@ class SystemRuleInput extends Component{
                 id={this.props.index}
                 value={this.props.rule.drawRule.value} 
                 onChange={this.props.handleChange}
+
             />
         :
              "" ; 
 
         return(
-            <tr> 
+            <tr>
+                <td>
+                    <button className="removeRule" id={this.props.index} onClick={this.props.removeRuleHandler}>-</button><br/>
+                </td> 
                 <td> 
                     <input 
                         type="Text" 
@@ -45,7 +49,7 @@ class SystemRuleInput extends Component{
                         title={DescriptionStrings.replacementRule} 
                         id={this.props.index} 
                         value={this.props.rule.replacementRule} 
-                        onChange = {this.props.handleChange}
+                        onChange={this.props.handleChange}
                     />
                 </td>
 

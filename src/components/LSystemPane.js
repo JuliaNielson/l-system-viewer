@@ -18,6 +18,7 @@ class LSystemPane extends React.Component {
         this.editSymbolRule = this.editSymbolRule.bind(this);
         this.getSystemByDisplayName = this.getSystemByDisplayName.bind(this);
         this.loadSystem = this.loadSystem.bind(this);
+        this.removeRuleHandler = this.removeRuleHandler.bind(this);
     }
 
     render(){
@@ -28,6 +29,7 @@ class LSystemPane extends React.Component {
                     ruleState={this.state.ruleState} 
                     formHandler={this.handleForm}
                     addRuleHandler={this.addRuleHandler}
+                    removeRuleHandler={this.removeRuleHandler}
                     loadSystem={this.loadSystem}
                     forceGenerate={this.state.forceGenerate}
                 ></ControlPane>
@@ -130,6 +132,19 @@ class LSystemPane extends React.Component {
                     symbolRules : rules
             }
         }));
+    }
+
+    removeRuleHandler(e){
+        let rules = this.state.ruleState.symbolRules;
+        let toRemove = this.findRuleByIndex(rules, parseInt(e.target.id, 10));
+        let index = rules.indexOf(toRemove);
+        if (index !== -1){
+            rules.splice(index, 1);
+            this.setState(prevState => ({
+                ...prevState.ruleState,
+                    symbolRules: rules
+            }))
+        }
     }
 
     findRuleByIndex(rules, index){

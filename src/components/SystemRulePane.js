@@ -13,6 +13,7 @@ class SystemRulePane extends Component{
                     index={rule.ruleIndex} 
                     rule={rule} 
                     handleChange={this.props.formHandler}
+                    removeRuleHandler={this.props.removeRuleHandler}
                 />
             );
         });
