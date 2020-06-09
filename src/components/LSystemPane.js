@@ -140,9 +140,16 @@ class LSystemPane extends React.Component {
         let index = rules.indexOf(toRemove);
         if (index !== -1){
             rules.splice(index, 1);
+            let newRules = rules.map((rule, index) =>{
+                if (rule.ruleIndex > index){
+                    rule.ruleIndex = index;
+                    index = index + 1;
+                }
+                return rule;
+            });
             this.setState(prevState => ({
                 ...prevState.ruleState,
-                    symbolRules: rules
+                    symbolRules: newRules
             }))
         }
     }
